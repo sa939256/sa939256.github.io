@@ -1,38 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фиксики - вымысел?</title>
+    <title>Тест</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function next_page(){
+            let i = document.getElementById('global');
+            switch(i.value){
+                case 'page_1': 
+                    let main_i = document.getElementById('img_main');
+                    let small_i = document.getElementById('img_small');
+                    main_i.style.width = '0px';
+                    main_i.style.height = '0px';
+                    main_i.style.position = 'absolute';
+                    main_i.style.visibility = 'hidden';
+                    small_i.style.position = 'relative';
+                    small_i.style.visibility = 'visible';
+                    break;
+                case 'page_3':
+                    let but = document.getElementById('next_button');
+                    but.style.display = 'none';
+                    break;
+            }
+            let previos_page = document.getElementById(i.value);
+            previos_page.style.display = 'none';
+            i.value = 'page_' + String(Number(i.value[5]) + 1);
+            if (i.value[5] < 5) {
+                let next_page = document.getElementById(i.value);
+                next_page.style.display = 'inline-block';
+            } 
+            
+
+            return false;
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <img src="fon.jpg" alt="">
-            <a href="">Биография</a>
-            <a href="">Знаменитые анимэ</a>
-            <a href="">3</a>
-            <a href="">4</a>
-        </nav>
-    </header>
-    <main>
-        <div class="column">
-            <artiicle>
-                <p>Хая́о Миядза́ки (яп. 宮崎 駿 Миядзаки Хаяо, род. 5 января 1941, Токио) — японский режиссёр-аниматор, продюсер, сценарист, писатель и мангака. Он родился в семье владельца авиационной фабрики, с детства увлёкся рисованием манги и анимацией. В 1964 году он познакомился с Исао Такахатой, совместно с которым впоследствии основал анимационную студию Studio Ghibli. На протяжении длительного времени они вместе работали над множеством художественных произведений.
-                    Хаяо Миядзаки — обладатель внеконкурсного почётного «Оскара» 2014 года со следующей формулировкой заслуг — «за оказание глубокого влияния на мировую анимацию, вдохновляя целое поколение художников работать в этой области и освещая её безграничный потенциал»</p>
-            </artiicle>
-            <artiicle>
-                <iframe src="https://www.youtube.com/embed/fYpRBv-GCDA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </artiicle>
+    <div id="section">
+        <div id="section_logo">
+            <img id="img_main" src="photo1658772653.jpeg" alt="image">
+            <img id="img_small" src="photo1658710510.jpeg" alt="image">
         </div>
-        <artiicle id="like">
-            <h2>Вам понравилось?</h2>
-        </artiicle>
-    </main>
-    <footer>
-        <h3>Наши контакты 12345678</h3>
-    </footer>
+        <div id="main">
+            <form action="">
+                <input id="global" type="hidden" value="page_1">
+                <div class="page" id="page_1">
+                    <h1>Здравствуйте, Аноним!</h1>
+                    <p>Спасибо, что нашли время помочь нам с активностью</p>
+                    <p>1. Как к Вам обращаться?</p>
+                    <input class="custom-radio" id="male" type="radio" name="gender" value="male">
+                    <label for="male">Сударь</label>
+                    <input class="custom-radio" id="female" type="radio" name="gender" value="female">
+                    <label for="female">Сударыня</label>
+                    <p>2. Сколько Вам лет?</p>
+                    <input type="text" size="10">
+                </div>
+                <div class="page" id="page_2">
+                    <p class="change">_ch, расскажите нам, чем Вы готов(а) поделиться с нами?</p>
+                    <input class="custom-checkbox" id="sport" type="checkbox" name="talant" value="yes">
+                    <label for="sport">Временем на спорт!</label>
+                    <input class="custom-checkbox" id="mind" type="checkbox" name="talant" value="yes">
+                    <label for="mind">Мозгами</label>
+                    <input class="custom-checkbox" id="blago" type="checkbox" name="talant" value="yes">
+                    <label for="blago">Люблю творить благие дела</label>
+                    <input class="custom-checkbox" id="ekology" type="checkbox" name="talant" value="yes">
+                    <label for="ekology">Делами по защите природы!</label>
+                    <input class="custom-checkbox" id="razvi_me" type="checkbox" name="talant" value="yes">
+                    <label for="razvi_me">Развитием своего Я</label>
+                    <input class="custom-checkbox" id="job" type="checkbox" name="talant" value="yes">
+                    <label for="job">Профессией, и если получится, то работой</label>
+                    <input class="custom-checkbox" id="tvorchestvo" type="checkbox" name="talant" value="yes">
+                    <label for="tvorchestvo">Творчеством и помощью в его развитии</label>
+                </div>
+                <div class="page" id="page_3">
+                    <p class="change">В каких мероприятиях Вы хотите поучаствовать?</p>
+                    <input class="custom-checkbox" id="kviz" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="kviz">Квиз Плиз (соберемся командами и выясним кто тут главный по мозгам)</label>
+                    <input class="custom-checkbox" id="hero" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="hero">Гонка героев (соберемся командами и выясним кто там главный по мускулам‍)</label>
+                    <input class="custom-checkbox" id="master" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="master">Мастер класс (выберем спикера и выудим из него интересную информацию)</label>
+                    <input class="custom-checkbox" id="hakaton" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="hakaton">Хакатон (будем вычислять крутых «хацкеров»)</label>
+                    <input class="custom-checkbox" id="open_doors" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="open_doors">День открытых дверей (откроем все двери и будем гулять)</label>
+                    <input class="custom-checkbox" id="fitnes" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="fitnes">Онлайн-фитнес</label>
+                    <input class="custom-checkbox" id="pervenstvo" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="pervenstvo">Первенство ИРИТ и ИЦР по любому виду спорта</label>
+                    <input class="custom-checkbox" id="teatr" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="teatr">Театральный вечер (окультуримся большой компанией)</label>
+                    <input class="custom-checkbox" id="book_club" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="book_club">Книжный клуб (устроим ежемесячные посиделки о книгах, которые читали, БЕСПЛАТНО!!!)</label>
+                    <input class="custom-checkbox" id="kino_klub" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="kino_klub">Киношный клуб (посмотрим ВСЁ, и даже больше)</label>
+                    <input class="custom-checkbox" id="plogging" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="plogging">Плоггинг (побегаем и заодно мусор поубираем)</label>
+                    <input class="custom-checkbox" id="teambuilding" type="checkbox" name="meropriyatiya" value="yes">
+                    <label for="teambuilding">Тимбилдинг (укрепим коллектив)</label>
+                </div>
+                <div class="page" id="page_4">
+                    <p>Если у Вас есть предложения по мероприятиям, то напишите в форму ниже</p>
+                    <input type="text" size="50">
+                    <p>Благодарим Вас за помощь, _ch, скоро выйдем с предложениями. До встречи!</p>
+                    <p>P.S.	Если Вы захотите пообщаться с интересными людьми, а возможно написать просьбу или предложение, то напишите сюда (почта молодежного актива) </p>
+                    <p><input class="button" type="submit" value="Закончить опрос!"></p>
+                </div>
+            </form>   
+        </div>
+        <p><input class="button" id="next_button" type="button" value="Далее" onclick="next_page();"></p>
+    </div>
 </body>
 </html>
