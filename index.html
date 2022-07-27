@@ -17,8 +17,12 @@
                     main_i.style.visibility = 'hidden';
                     small_i.style.position = 'relative';
                     small_i.style.visibility = 'visible';
+                    let tags = document.querySelectorAll(".change");
+                    for (let tag of tags ){
+                        tag.innerHTML = tag.innerHTML.replace('_ch', check);
+                    };
                     break;
-                case 'page_3':
+                case 'page_4':
                     let but = document.getElementById('next_button');
                     but.style.display = 'none';
                     break;
@@ -26,13 +30,23 @@
             let previos_page = document.getElementById(i.value);
             previos_page.style.display = 'none';
             i.value = 'page_' + String(Number(i.value[5]) + 1);
-            if (i.value[5] < 5) {
+            if (i.value[5] < 6) {
                 let next_page = document.getElementById(i.value);
                 next_page.style.display = 'inline-block';
             } 
             
 
             return false;
+        }
+        function check()
+        {
+            var inp = document.getElementsByName('gender');
+            for (var i = 0; i < inp.length; i++) {
+                if (inp[i].type == "radio" && inp[i].checked) {
+                    if (inp[i].value == "male") return 'Сударь'
+                    else return 'Сударыня';
+                }
+            }
         }
     </script>
 </head>
@@ -43,7 +57,7 @@
             <img id="img_small" src="photo1658710510.jpeg" alt="image">
         </div>
         <div id="main">
-            <form action="">
+            <form action="/">
                 <input id="global" type="hidden" value="page_1">
                 <div class="page" id="page_1">
                     <h1>Здравствуйте, Аноним!</h1>
@@ -57,7 +71,7 @@
                     <input type="text" size="10">
                 </div>
                 <div class="page" id="page_2">
-                    <p class="change">_ch, расскажите нам, чем Вы готов(а) поделиться с нами?</p>
+                    <p class="change">3. _ch, расскажите нам, чем Вы готовы поделиться с нами?</p>
                     <input class="custom-checkbox" id="sport" type="checkbox" name="talant" value="yes">
                     <label for="sport">Временем на спорт!</label>
                     <input class="custom-checkbox" id="mind" type="checkbox" name="talant" value="yes">
@@ -74,9 +88,9 @@
                     <label for="tvorchestvo">Творчеством и помощью в его развитии</label>
                 </div>
                 <div class="page" id="page_3">
-                    <p class="change">В каких мероприятиях Вы хотите поучаствовать?</p>
+                    <p>4. В каких мероприятиях Вы хотите поучаствовать?</p>
                     <input class="custom-checkbox" id="kviz" type="checkbox" name="meropriyatiya" value="yes">
-                    <label for="kviz">Квиз Плиз (соберемся командами и выясним кто тут главный по мозгам)</label>
+                    <label for="kviz">Участником, всех победю! (Соберемся командами и выясним кто тут главный по мозгам)</label>
                     <input class="custom-checkbox" id="hero" type="checkbox" name="meropriyatiya" value="yes">
                     <label for="hero">Гонка героев (соберемся командами и выясним кто там главный по мускулам‍)</label>
                     <input class="custom-checkbox" id="master" type="checkbox" name="meropriyatiya" value="yes">
@@ -88,7 +102,7 @@
                     <input class="custom-checkbox" id="fitnes" type="checkbox" name="meropriyatiya" value="yes">
                     <label for="fitnes">Онлайн-фитнес</label>
                     <input class="custom-checkbox" id="pervenstvo" type="checkbox" name="meropriyatiya" value="yes">
-                    <label for="pervenstvo">Первенство ИРИТ и ИЦР по любому виду спорта</label>
+                    <label for="pervenstvo">Первенство ИРИТ и ИРЦР по любому виду спорта</label>
                     <input class="custom-checkbox" id="teatr" type="checkbox" name="meropriyatiya" value="yes">
                     <label for="teatr">Театральный вечер (окультуримся большой компанией)</label>
                     <input class="custom-checkbox" id="book_club" type="checkbox" name="meropriyatiya" value="yes">
@@ -101,11 +115,40 @@
                     <label for="teambuilding">Тимбилдинг (укрепим коллектив)</label>
                 </div>
                 <div class="page" id="page_4">
+                    <p>5. Вам хотелось бы поучаствовать в наших мероприятиях?</p>
+                    <input class="custom-radio" id="yes" type="radio" name="participation" value="yes">
+                    <label for="yes">Конечно, я люблю активный отдых</label>
+                    <input class="custom-radio" id="possible" type="radio" name="participation" value="possible">
+                    <label for="possible">Ну, возможно, пару раз поучаствовал бы…</label>
+                    <input class="custom-radio" id="no" type="radio" name="participation" value="no">
+                    <label for="no">Не, давайте без меня</label>
+
+                    <p class="change">6. Кем Вы хотите быть, _ch?</p>
+                    <input class="custom-checkbox" id="participant" type="checkbox" name="role" value="yes">
+                    <label for="participant">Участником, всех победю!</label>
+                    <input class="custom-checkbox" id="organizer" type="checkbox" name="role" value="yes">
+                    <label for="organizer">Организатором, всех построю!</label>
+                    <input class="custom-checkbox" id="informator" type="checkbox" name="role" value="yes">
+                    <label for="informator">Информатором, всех заинформирую!</label>
+                    <input class="custom-checkbox" id="nobody" type="checkbox" name="role" value="yes">
+                    <label for="nobody">Тенью…</label>
+
+                    <p class="change">7. _ch,а какой формат мероприятий Вам хотелось бы?</p>
+                    <input class="custom-radio" id="online" type="radio" name="format" value="online">
+                    <label for="online">Online, я же зумер</label>
+                    <input class="custom-radio" id="hybrid" type="radio" name="format" value="hybrid">
+                    <label for="hybrid">«Гибрид» меня устроит</label>
+                    <input class="custom-radio" id="offline" type="radio" name="format" value="offline">
+                    <label for="offline">Я люблю живое общение, по старинке</label>
+
+                    
+                </div>
+                <div class="page" id="page_5">
                     <p>Если у Вас есть предложения по мероприятиям, то напишите в форму ниже</p>
-                    <input type="text" size="50">
-                    <p>Благодарим Вас за помощь, _ch, скоро выйдем с предложениями. До встречи!</p>
+                    <input type="text" size="50" style = "height: 60px">
+                    <p class="change">Благодарим Вас за помощь, _ch, скоро выйдем с предложениями. До встречи!</p>
                     <p>P.S.	Если Вы захотите пообщаться с интересными людьми, а возможно написать просьбу или предложение, то напишите сюда (почта молодежного актива) </p>
-                    <p><input class="button" type="submit" value="Закончить опрос!"></p>
+                    <p><input class="button" type="button" value="Закончить опрос!" onclick="alert('Данные отправлены!');window.location.reload ();"></p>
                 </div>
             </form>   
         </div>
